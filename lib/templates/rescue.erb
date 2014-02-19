@@ -1,8 +1,14 @@
 <script type="text/javascript">
 var Airbrake = {
-  host    : <%= host.to_json %>,
-  api_key : <%= api_key.to_json %>,
-  notice  : <%= notice.to_json %>,
+  <% if "".respond_to?(:html_safe) %>
+    host : <%= host.to_json.html_safe %>,
+    api_key : <%= api_key.to_json.html_safe %>,
+    notice : <%= notice.to_json.html_safe %>,
+  <% else -%>
+    host : <%= host.to_json %>,
+    api_key : <%= api_key.to_json %>,
+    notice : <%= notice.to_json %>,
+  <% end -%>
   message : 'This error exists in production!',
 
   initialize: function() {
